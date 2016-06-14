@@ -25,6 +25,6 @@ https://camunda.org/download/modeler/
 
 There are two options:
 
-a) follows tutorial https://docs.camunda.org/get-started/bpmn20/project-setup/
+a) you can follow tutorial in https://docs.camunda.org/get-started/bpmn20/project-setup/
 
-b) or clone this repository and follows `deploy.sh` steps.
+b) or clone this repository and follow `deploy.sh` steps.
