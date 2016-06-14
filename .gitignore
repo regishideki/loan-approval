@@ -16,3 +16,4 @@ target/
 
 # BPM
 .bpmn
+**/*.png
