@@ -1,4 +1,4 @@
-package org.camunda.bpm.getstarted.loanapproval;
+package br.com.bankfacil.loan_approval;
 
 import org.camunda.bpm.application.ProcessApplication;
 import org.camunda.bpm.application.impl.ServletProcessApplication;
