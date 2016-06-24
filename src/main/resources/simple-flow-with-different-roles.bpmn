@@ -30,14 +30,18 @@
       <bpmn:incoming>SequenceFlow_0yxmbyp</bpmn:incoming>
     </bpmn:endEvent>
     <bpmn:sequenceFlow id="SequenceFlow_0yxmbyp" sourceRef="ParallelGateway_04pgs3m" targetRef="EndEvent_18t1ge5" />
-    <bpmn:userTask id="UserTask_0dsx430" name="get document 1">
+    <bpmn:userTask id="UserTask_0dsx430" name="get document 1" camunda:candidateGroups="group-1">
       <bpmn:extensionElements>
         <camunda:formData />
+        <camunda:taskListener class="br.com.bankfacil.loan.approval.AssigneeRandomCandidateTaskListener" event="create" />
       </bpmn:extensionElements>
       <bpmn:incoming>SequenceFlow_1951n84</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_0gcd8ih</bpmn:outgoing>
     </bpmn:userTask>
-    <bpmn:userTask id="UserTask_1t6cp3p" name="get document 2">
+    <bpmn:userTask id="UserTask_1t6cp3p" name="get document 2" camunda:candidateGroups="group-2">
+      <bpmn:extensionElements>
+        <camunda:taskListener class="br.com.bankfacil.loan.approval.AssigneeRandomCandidateTaskListener" event="create" />
+      </bpmn:extensionElements>
       <bpmn:incoming>SequenceFlow_0lei0tc</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_005w69i</bpmn:outgoing>
     </bpmn:userTask>
