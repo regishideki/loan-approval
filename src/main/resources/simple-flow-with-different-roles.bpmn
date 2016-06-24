@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="Definitions_1" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="1.0.0">
   <bpmn:collaboration id="Collaboration_04wyga7">
-    <bpmn:participant id="Participant_0fd9j77" name="simple flow with different roles" processRef="simple-flow-with-different-roles" />
+    <bpmn:participant id="simple-flow" name="simple flow with different roles" processRef="simple-flow-with-different-roles" />
   </bpmn:collaboration>
   <bpmn:process id="simple-flow-with-different-roles" name="simple flow with different roles" isExecutable="true">
     <bpmn:laneSet>
@@ -19,6 +19,14 @@
       </bpmn:lane>
     </bpmn:laneSet>
     <bpmn:startEvent id="StartEvent_1cgaj9j">
+      <bpmn:extensionElements>
+        <camunda:formData>
+          <camunda:formField id="leadId" label="Lead Id" type="string" />
+          <camunda:formField id="maritalStatus" label="Estado civil" type="string" />
+          <camunda:formField id="stableUnion" label="Vive em união estável?" type="boolean" />
+          <camunda:formField id="professionalStatus" label="Status profisisonal" type="string" />
+        </camunda:formData>
+      </bpmn:extensionElements>
       <bpmn:outgoing>SequenceFlow_15rcfgt</bpmn:outgoing>
     </bpmn:startEvent>
     <bpmn:sequenceFlow id="SequenceFlow_15rcfgt" sourceRef="StartEvent_1cgaj9j" targetRef="ParallelGateway_1n9u9sg" />
@@ -32,7 +40,12 @@
     <bpmn:sequenceFlow id="SequenceFlow_0yxmbyp" sourceRef="ParallelGateway_04pgs3m" targetRef="EndEvent_18t1ge5" />
     <bpmn:userTask id="UserTask_0dsx430" name="get document 1" camunda:candidateGroups="group-1">
       <bpmn:extensionElements>
-        <camunda:formData />
+        <camunda:formData>
+          <camunda:formField id="leadId" label="Lead Id" type="string" />
+          <camunda:formField id="maritalStatus" label="Estado civil" type="string" />
+          <camunda:formField id="stableUnion" label="Vive em união estável?" type="boolean" />
+          <camunda:formField id="professionalStatus" label="Status profissional" type="string" />
+        </camunda:formData>
         <camunda:taskListener class="br.com.bankfacil.loan.approval.AssigneeRandomCandidateTaskListener" event="create" />
       </bpmn:extensionElements>
       <bpmn:incoming>SequenceFlow_1951n84</bpmn:incoming>
@@ -40,6 +53,12 @@
     </bpmn:userTask>
     <bpmn:userTask id="UserTask_1t6cp3p" name="get document 2" camunda:candidateGroups="group-2">
       <bpmn:extensionElements>
+        <camunda:formData>
+          <camunda:formField id="leadId" label="Lead Id" type="string" />
+          <camunda:formField id="maritalStatus" label="Estado civil" type="string" />
+          <camunda:formField id="stableUnion" label="Vive em união estável?" type="boolean" />
+          <camunda:formField id="professionalStatus" label="Status profissional" type="string" />
+        </camunda:formData>
         <camunda:taskListener class="br.com.bankfacil.loan.approval.AssigneeRandomCandidateTaskListener" event="create" />
       </bpmn:extensionElements>
       <bpmn:incoming>SequenceFlow_0lei0tc</bpmn:incoming>
@@ -58,7 +77,7 @@
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_04wyga7">
-      <bpmndi:BPMNShape id="Participant_0fd9j77_di" bpmnElement="Participant_0fd9j77">
+      <bpmndi:BPMNShape id="Participant_0fd9j77_di" bpmnElement="simple-flow">
         <dc:Bounds x="47" y="-1" width="758" height="598" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Lane_05gn724_di" bpmnElement="Lane_05gn724">
