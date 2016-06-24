@@ -1,19 +1,30 @@
-# laon-approval
+# Loan-approval
 POC - Camunda
 
-1 - Download Camunda e seguir o "How to start":
+# How to start
+
+1 - It's necessary to download Camunda.
+
 https://camunda.org/download/
 
-2 - Download do Eclipse:
+Follows "how to start" to see if it is being running correctly.
+
+2 - It's necessary to download Eclipse:
+
 https://www.eclipse.org/downloads/
 
-e instalar plugin "Camunda BPMN 2.0 Modeler":
+and to install "Camunda BPMN 2.0 Modeler":
+
 https://marketplace.eclipse.org/content/camunda-bpmn-20-modeler
 
-opcional (é possível usar apenas o plugin do eclipse para modelagem, mas o modeler possui mais funcionalidades e tem melhor GUI):
+optional (it's possible to use eclipse plugin only, but the modeler has more features and a better GUI):
+
 https://camunda.org/download/modeler/
 
-3 - Testando primeiro deploy:
-Duas opções:
-a) seguir o tutorial em https://docs.camunda.org/get-started/bpmn20/project-setup/
-b) baixar este projeto e seguir modelo do deploy.sh
+3 - First deploy:
+
+There are two options:
+
+a) you can follow tutorial in https://docs.camunda.org/get-started/bpmn20/project-setup/
+
+b) or clone this repository and follow `deploy.sh` steps.
