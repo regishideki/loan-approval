@@ -1,53 +1,96 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<bpmn:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL BPMN20.xsd" id="Definitions_1" exporter="Camunda Modeler" exporterVersion="1.0.0" targetNamespace="http://bpmn.io/schema/bpmn">
-  <bpmn:process id="approve-loan" name="Loan Approval" isExecutable="true">
-    <bpmn:extensionElements>
-      <camunda:properties><![CDATA[
-        ]]><camunda:property/><![CDATA[
-        ]]><camunda:property/><![CDATA[
-      ]]></camunda:properties>
-    </bpmn:extensionElements>
-    <bpmn:startEvent id="StartEvent_1" name="Loan Request Received">
-      <bpmn:outgoing>SequenceFlow_16b51y2</bpmn:outgoing>
-    </bpmn:startEvent>
-    <bpmn:sequenceFlow id="SequenceFlow_16b51y2" sourceRef="StartEvent_1" targetRef="UserTask_0dia4ib"/>
-    <bpmn:userTask id="UserTask_0dia4ib" camunda:assignee="john" name="Approve Loan 10">
-      <bpmn:incoming>SequenceFlow_16b51y2</bpmn:incoming>
-      <bpmn:outgoing>SequenceFlow_0y1111m</bpmn:outgoing>
-    </bpmn:userTask>
-    <bpmn:endEvent id="EndEvent_0d0z8mp" name="Loan Request Approved">
-      <bpmn:incoming>SequenceFlow_0y1111m</bpmn:incoming>
-    </bpmn:endEvent>
-    <bpmn:sequenceFlow id="SequenceFlow_0y1111m" sourceRef="UserTask_0dia4ib" targetRef="EndEvent_0d0z8mp"/>
-  </bpmn:process>
-  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
-    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="approve-loan">
-      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
-        <dc:Bounds height="36.0" width="36.0" x="173.0" y="102.0"/>
+<definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" xmlns:activiti="http://activiti.org/bpmn" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="Definitions_1" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="1.0.0" xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL BPMN20.xsd">
+  <process id="approve-loan" name="Loan Approval" isExecutable="true">
+    <extensionElements>
+      <camunda:properties>
+        <camunda:property />
+        <camunda:property />
+      </camunda:properties>
+    </extensionElements>
+    <startEvent id="StartEvent_1" name="Loan Request Received" activiti:formKey="embedded:app:forms/request-loan.html">
+      <extensionElements>
+        <camunda:formData>
+          <camunda:formField id="idade" label="idade" type="long" />
+        </camunda:formData>
+      </extensionElements>
+      <outgoing>SequenceFlow_16b51y2</outgoing>
+    </startEvent>
+    <sequenceFlow id="SequenceFlow_16b51y2" sourceRef="StartEvent_1" targetRef="UserTask_0dia4ib" />
+    <userTask id="UserTask_0dia4ib" name="Approve Loan 1" camunda:assignee="john" activiti:assignee="john">
+      <extensionElements>
+        <camunda:formData>
+          <camunda:formField id="name" label="name" type="string" />
+          <camunda:formField id="numero_qualquer" label="numero qualquer" type="long" />
+        </camunda:formData>
+      </extensionElements>
+      <incoming>SequenceFlow_16b51y2</incoming>
+      <outgoing>SequenceFlow_1lc44gh</outgoing>
+    </userTask>
+    <sequenceFlow id="SequenceFlow_1lc44gh" sourceRef="UserTask_0dia4ib" targetRef="UserTask_1wprt7l" />
+    <serviceTask id="ServiceTask_0p9124l" name="Process Request" camunda:class="br.com.bankfacil.loan.approval.ProcessRequestDelegate" activiti:class="br.com.bankfacil.loan_approval.ProcessRequestDelegate">
+      <incoming>SequenceFlow_1lmbs5v</incoming>
+      <outgoing>SequenceFlow_1</outgoing>
+    </serviceTask>
+    <sequenceFlow id="SequenceFlow_1" name="" sourceRef="ServiceTask_0p9124l" targetRef="EndEvent_0d0z8mp" />
+    <endEvent id="EndEvent_0d0z8mp" name="Loan Request Approved">
+      <incoming>SequenceFlow_1</incoming>
+    </endEvent>
+    <sequenceFlow id="SequenceFlow_1lmbs5v" sourceRef="UserTask_1wprt7l" targetRef="ServiceTask_0p9124l" />
+    <userTask id="UserTask_1wprt7l" name="Approve Loan 2" camunda:assignee="john">
+      <extensionElements>
+        <camunda:formData>
+          <camunda:formField id="campo_novo" label="campo_novo" type="long" />
+          <camunda:formField id="name" label="name_form_anterior" type="string" />
+        </camunda:formData>
+      </extensionElements>
+      <incoming>SequenceFlow_1lc44gh</incoming>
+      <outgoing>SequenceFlow_1lmbs5v</outgoing>
+    </userTask>
+  </process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_approve-loan">
+    <bpmndi:BPMNPlane id="BPMNPlane_approve-loan" bpmnElement="approve-loan">
+      <bpmndi:BPMNShape id="BPMNShape_StartEvent_1" bpmnElement="StartEvent_1">
+        <omgdc:Bounds x="173" y="102" width="36" height="36" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNEdge id="SequenceFlow_16b51y2_di" bpmnElement="SequenceFlow_16b51y2">
-        <di:waypoint xsi:type="dc:Point" x="209.0" y="120.0"/>
-        <di:waypoint xsi:type="dc:Point" x="268.0" y="120.0"/>
+      <bpmndi:BPMNShape id="BPMNShape_UserTask_0dia4ib" bpmnElement="UserTask_0dia4ib">
+        <omgdc:Bounds x="279" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_EndEvent_0d0z8mp" bpmnElement="EndEvent_0d0z8mp">
+        <omgdc:Bounds x="729" y="102" width="36" height="36" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds height="20.0" width="90.0" x="236.0" y="95.0"/>
+          <omgdc:Bounds x="674" y="143" width="146" height="22" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_ServiceTask_0p9124l" bpmnElement="ServiceTask_0p9124l">
+        <omgdc:Bounds x="575" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_16b51y2" bpmnElement="SequenceFlow_16b51y2">
+        <omgdi:waypoint xsi:type="omgdc:Point" x="209" y="120" />
+        <omgdi:waypoint xsi:type="omgdc:Point" x="239" y="120" />
+        <omgdi:waypoint xsi:type="omgdc:Point" x="239" y="120" />
+        <omgdi:waypoint xsi:type="omgdc:Point" x="279" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_1lc44gh" bpmnElement="SequenceFlow_1lc44gh">
+        <omgdi:waypoint xsi:type="omgdc:Point" x="379" y="120" />
+        <omgdi:waypoint xsi:type="omgdc:Point" x="427" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_1" bpmnElement="SequenceFlow_1" sourceElement="BPMNShape_ServiceTask_0p9124l" targetElement="BPMNShape_EndEvent_0d0z8mp">
+        <omgdi:waypoint xsi:type="omgdc:Point" x="675" y="120" />
+        <omgdi:waypoint xsi:type="omgdc:Point" x="729" y="120" />
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds x="623" y="120" width="90" height="6" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNShape id="UserTask_0dia4ib_di" bpmnElement="UserTask_0dia4ib">
-        <dc:Bounds height="80.0" width="100.0" x="268.0" y="80.0"/>
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="EndEvent_0d0z8mp_di" bpmnElement="EndEvent_0d0z8mp">
-        <dc:Bounds height="36.0" width="36.0" x="437.0" y="102.0"/>
+      <bpmndi:BPMNEdge id="SequenceFlow_1lmbs5v_di" bpmnElement="SequenceFlow_1lmbs5v">
+        <omgdi:waypoint xsi:type="omgdc:Point" x="527" y="120" />
+        <omgdi:waypoint xsi:type="omgdc:Point" x="575" y="120" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds height="20.0" width="90.0" x="410.0" y="138.0"/>
-        </bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNEdge id="SequenceFlow_0y1111m_di" bpmnElement="SequenceFlow_0y1111m">
-        <di:waypoint xsi:type="dc:Point" x="368.0" y="120.0"/>
-        <di:waypoint xsi:type="dc:Point" x="437.0" y="120.0"/>
-        <bpmndi:BPMNLabel>
-          <dc:Bounds height="20.0" width="90.0" x="357.5" y="95.0"/>
+          <omgdc:Bounds x="506" y="95" width="90" height="20" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="UserTask_1wprt7l_di" bpmnElement="UserTask_1wprt7l">
+        <omgdc:Bounds x="427" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
-</bpmn:definitions>
+</definitions>

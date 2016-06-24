@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/DMN/20151101/dmn11.xsd" id="definitions" name="definitions" namespace="http://camunda.org/schema/1.0/dmn">
+  <decision id="document_checklist" name="Document Checklist">
+    <decisionTable id="decisionTable" hitPolicy="COLLECT">
+      <input id="input1" label="marital_status">
+        <inputExpression id="inputExpression1" typeRef="string">        <text>maritalStatus</text>
+</inputExpression>
+      </input>
+      <input id="InputClause_0hmkumv" label="professional_status">
+        <inputExpression id="LiteralExpression_0m7s53h" typeRef="string">        <text>professionalStatus</text>
+</inputExpression>
+      </input>
+      <input id="InputClause_00n8t6x" label="stable_union">
+        <inputExpression id="LiteralExpression_0exndz8" typeRef="boolean">        <text>stableUnion</text>
+</inputExpression>
+      </input>
+      <output id="output1" label="documents" name="documents" typeRef="string" />
+      <rule id="row-950612891-1">
+        <inputEntry id="UnaryTests_0c1o054">        <text><![CDATA["single"]]></text>
+</inputEntry>
+        <inputEntry id="UnaryTests_1lod0sz">        <text></text>
+</inputEntry>
+        <inputEntry id="UnaryTests_0hl0mvb">        <text></text>
+</inputEntry>
+        <outputEntry id="LiteralExpression_065u3ym">        <text><![CDATA["birth_certificate"]]></text>
+</outputEntry>
+      </rule>
+      <rule id="row-950612891-2">
+        <inputEntry id="UnaryTests_0u1z4ho">        <text><![CDATA["married"]]></text>
+</inputEntry>
+        <inputEntry id="UnaryTests_1euytqf">        <text></text>
+</inputEntry>
+        <inputEntry id="UnaryTests_0xmyqsp">        <text></text>
+</inputEntry>
+        <outputEntry id="LiteralExpression_198frve">        <text><![CDATA["marriage_certificate"]]></text>
+</outputEntry>
+      </rule>
+      <rule id="row-950612891-3">
+        <inputEntry id="UnaryTests_1vn9t5c">        <text><![CDATA["widower"]]></text>
+</inputEntry>
+        <inputEntry id="UnaryTests_1bbbmvu">        <text></text>
+</inputEntry>
+        <inputEntry id="UnaryTests_12vtpz4">        <text></text>
+</inputEntry>
+        <outputEntry id="LiteralExpression_1bewepn">        <text><![CDATA["marriage_certificate"]]></text>
+</outputEntry>
+      </rule>
+      <rule id="row-950612891-4">
+        <inputEntry id="UnaryTests_0ogofox">        <text></text>
+</inputEntry>
+        <inputEntry id="UnaryTests_0c60gjz">        <text><![CDATA["clt"]]></text>
+</inputEntry>
+        <inputEntry id="UnaryTests_13o17ds">        <text></text>
+</inputEntry>
+        <outputEntry id="LiteralExpression_1lahvj7">        <text><![CDATA["irpf"]]></text>
+</outputEntry>
+      </rule>
+      <rule id="row-950612891-5">
+        <inputEntry id="UnaryTests_1774yme">        <text></text>
+</inputEntry>
+        <inputEntry id="UnaryTests_01rn17i">        <text><![CDATA["businessman", "freelancer"]]></text>
+</inputEntry>
+        <inputEntry id="UnaryTests_0rbyc8c">        <text></text>
+</inputEntry>
+        <outputEntry id="LiteralExpression_0jpd7hr">        <text><![CDATA["irpj"]]></text>
+</outputEntry>
+      </rule>
+      <rule id="row-950612891-6">
+        <inputEntry id="UnaryTests_0ifdx8k">        <text></text>
+</inputEntry>
+        <inputEntry id="UnaryTests_0c8ym7l">        <text></text>
+</inputEntry>
+        <inputEntry id="UnaryTests_050pens">        <text></text>
+</inputEntry>
+        <outputEntry id="LiteralExpression_08d4mb6">        <text><![CDATA["cpf"]]></text>
+</outputEntry>
+      </rule>
+      <rule id="row-25647454-1">
+        <inputEntry id="UnaryTests_0012a9b">        <text></text>
+</inputEntry>
+        <inputEntry id="UnaryTests_1grfmd6">        <text></text>
+</inputEntry>
+        <inputEntry id="UnaryTests_1ku23b1">        <text>true</text>
+</inputEntry>
+        <outputEntry id="LiteralExpression_0i952bh">        <text><![CDATA["stable_union_certificate"]]></text>
+</outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+</definitions>
