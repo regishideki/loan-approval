@@ -28,3 +28,7 @@ There are two options:
 a) you can follow tutorial in https://docs.camunda.org/get-started/bpmn20/project-setup/
 
 b) or clone this repository and follow `deploy.sh` steps.
+
+# Using Rest API
+use this intemediate path to access camunda Rest API: /camunda/api/engine/engine/default/
+Example: http://localhost:8080/camunda/api/engine/engine/default/decision-definition/key/#{key}/evaluate
